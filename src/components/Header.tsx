@@ -126,13 +126,22 @@ export default function Header() {
             >
               Contact
             </Link>
-            <Link
-              href="/blogs"
-              className="text-gray-600 hover:text-blue-600 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Blogs
-            </Link>
+            
+            {isBlogPage ? (
+                <Link
+                  href="/"
+                   className="bg-blue-600 hover:bg-blue-700 text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                >
+                  🏠 Home
+                </Link>
+              ) : (
+                <Link
+                  href="/blogs"
+                   className="text-gray-600 hover:text-blue-600 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                >
+                  Blogs
+                </Link>
+              )}
             
             {/* Mobile Dynamic Button */}
             <div className="pt-2">
@@ -147,7 +156,7 @@ export default function Header() {
               ) : (
                 <Link
                   href="/projects"
-                  className="bg-blue-600 hover:bg-blue-700 text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                  className="text-gray-600 hover:text-blue-600 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   📁 Recent Projects
