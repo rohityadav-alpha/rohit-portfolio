@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import Header from "@/components/Header";
 
 export default function ProjectDetailPage() {
   const params = useParams();
@@ -116,6 +117,7 @@ export default function ProjectDetailPage() {
 
   return (
     <>
+      <Header />
       <div className="min-h-screen bg-gray-50 py-8 sm:py-12 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -249,6 +251,7 @@ export default function ProjectDetailPage() {
           </div>
         </div>
       </div>
+      
 
       {/* SIMPLE GUARANTEED WORKING MODAL */}
       {showModal && selectedImage && (

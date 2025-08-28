@@ -2,6 +2,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import ProjectUpload from '../../../components/ProjectUpload';
+import Header from '@/components/Header';
 
 export default function AddProjectPage() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -29,8 +30,10 @@ export default function AddProjectPage() {
     }
   }, []);
 
-  if (showPasswordForm && !isAdmin) {
+  if (showPasswordForm && !isAdmin) { 
     return (
+      <main>
+      <Header />
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
         <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg w-full max-w-sm sm:max-w-md">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center">
@@ -61,15 +64,18 @@ export default function AddProjectPage() {
           </form>
         </div>
       </div>
+      </main>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 sm:py-12 lg:py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header - Mobile Responsive */}
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-4">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center sm:text-left">
+    <main>
+      <Header />
+      <div className="min-h-screen bg-gray-50 py-8 sm:py-12 lg:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header - Mobile Responsive */}
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-4">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center sm:text-left">
             Admin Panel
           </h1>
           <button
@@ -88,5 +94,6 @@ export default function AddProjectPage() {
         <ProjectUpload />
       </div>
     </div>
+    </main>
   );
 }

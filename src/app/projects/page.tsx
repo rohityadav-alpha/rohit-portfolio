@@ -2,6 +2,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Header from "@/components/Header";
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState([]);
@@ -59,6 +60,8 @@ export default function ProjectsPage() {
   }
 
   return (
+    <main>
+      <Header />
     <div className="min-h-screen bg-gray-50 py-8 sm:py-12 lg:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section - Mobile Responsive */}
@@ -186,5 +189,6 @@ export default function ProjectsPage() {
         )}
       </div>
     </div>
+    </main>
   );
 }

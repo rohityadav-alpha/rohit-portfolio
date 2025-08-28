@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Header from '@/components/Header';
 
 export default function EditProjectPage() {
   const params = useParams();
@@ -192,10 +193,12 @@ export default function EditProjectPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 sm:py-12 lg:py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl">
-        {/* Header - Mobile Responsive */}
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-4">
+    <main>
+      <Header />
+      <div className="min-h-screen bg-gray-50 py-8 sm:py-12 lg:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl">
+          {/* Header - Mobile Responsive */}
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-4">
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center sm:text-left">
             Edit Project
           </h1>
@@ -378,5 +381,6 @@ export default function EditProjectPage() {
         </div>
       </div>
     </div>
+    </main>
   );
 }
