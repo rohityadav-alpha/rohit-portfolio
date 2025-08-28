@@ -62,21 +62,20 @@ export default function BlogUpload() {
   };
 
   return (
-    <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-lg max-w-4xl mx-auto">
-      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 text-center">
+    <div className="bg-white p-6 rounded-xl shadow-lg max-w-4xl mx-auto">
+      <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
         Add New Blog Post
       </h2>
 
       {message && (
-        <div className={`p-3 sm:p-4 rounded-lg mb-4 sm:mb-6 text-sm sm:text-base ${
+        <div className={`p-4 rounded-lg mb-6 ${
           message.includes('successfully') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
         }`}>
           {message}
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-        {/* Title */}
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Blog Title
@@ -87,13 +86,11 @@ export default function BlogUpload() {
             value={formData.title}
             onChange={handleInputChange}
             required
-            className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             placeholder="Enter blog title"
-            suppressHydrationWarning={true}
           />
         </div>
 
-        {/* Excerpt */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Excerpt (Brief Summary)
@@ -103,13 +100,11 @@ export default function BlogUpload() {
             value={formData.excerpt}
             onChange={handleInputChange}
             rows={2}
-            className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-sm sm:text-base"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
             placeholder="Brief summary of the blog post..."
-            suppressHydrationWarning={true}
           />
         </div>
 
-        {/* Content */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Blog Content
@@ -120,13 +115,11 @@ export default function BlogUpload() {
             onChange={handleInputChange}
             required
             rows={12}
-            className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-sm sm:text-base"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
             placeholder="Write your blog content here..."
-            suppressHydrationWarning={true}
           />
         </div>
 
-        {/* Category & Tags Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -136,8 +129,7 @@ export default function BlogUpload() {
               name="category"
               value={formData.category}
               onChange={handleInputChange}
-              className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
-              suppressHydrationWarning={true}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="Technology">Technology</option>
               <option value="Web Development">Web Development</option>
@@ -156,14 +148,12 @@ export default function BlogUpload() {
               name="tags"
               value={formData.tags}
               onChange={handleInputChange}
-              className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="react, nextjs, javascript..."
-              suppressHydrationWarning={true}
             />
           </div>
         </div>
 
-        {/* Featured Image */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Featured Image URL (Optional)
@@ -173,13 +163,11 @@ export default function BlogUpload() {
             name="imageUrl"
             value={formData.imageUrl}
             onChange={handleInputChange}
-            className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             placeholder="https://example.com/image.jpg"
-            suppressHydrationWarning={true}
           />
         </div>
 
-        {/* Publish Status */}
         <div className="flex items-center">
           <input
             type="checkbox"
@@ -187,19 +175,16 @@ export default function BlogUpload() {
             checked={formData.published}
             onChange={handleInputChange}
             className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-            suppressHydrationWarning={true}
           />
           <label className="ml-2 block text-sm text-gray-900">
             Publish immediately
           </label>
         </div>
 
-        {/* Submit Button */}
         <button
           type="submit"
           disabled={uploading}
-          className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors text-sm sm:text-base"
-          suppressHydrationWarning={true}
+          className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-3 px-6 rounded-lg transition-colors"
         >
           {uploading ? 'Creating...' : 'Create Blog Post'}
         </button>

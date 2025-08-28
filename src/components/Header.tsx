@@ -7,6 +7,7 @@ import Link from 'next/link';
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const isBlogPage = pathname.startsWith('/blogs');
   const isProjectsPage = pathname.startsWith('/projects');
 
   return (
@@ -16,7 +17,7 @@ export default function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
-              Rohit Yadav
+              Rohit Kumar
             </Link>
           </div>
 
@@ -41,9 +42,21 @@ export default function Header() {
               >
                 Contact
               </Link>
-              <Link href="/blogs" className="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
-                Blogs
-              </Link>
+              {isBlogPage ? (
+                <Link
+                  href="/"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                >
+                  🏠 Home
+                </Link>
+              ) : (
+                <Link
+                  href="/blogs"
+                  className="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+                >
+                  Blogs
+                </Link>
+              )}
               
               {/* Dynamic Button */}
               {isProjectsPage ? (
@@ -56,7 +69,7 @@ export default function Header() {
               ) : (
                 <Link
                   href="/projects"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                  className="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
                 >
                   📁 Recent Projects
                 </Link>

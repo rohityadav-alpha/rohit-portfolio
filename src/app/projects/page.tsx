@@ -175,6 +175,30 @@ export default function ProjectsPage() {
                       </span>
                     )}
                   </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 bg-gray-800 hover:bg-gray-900 text-white text-center py-2 px-3 rounded-lg font-medium transition-colors duration-300 text-sm"
+                      >
+                        GitHub
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-3 rounded-lg font-medium transition-colors duration-300 text-sm"
+                      >
+                        Live Demo
+                      </a>
+                    )}
+                  </div>
                   
                   <Link
                     href={`/projects/${project.slug}`}

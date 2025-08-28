@@ -1,5 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
+// D:\rohit-portfolio\src\app\api\blogs\[slug]\route.ts
+import { NextRequest, NextResponse } from 'next/server';
+import { prisma } from '@/lib/db';
 
 export async function GET(
   request: NextRequest,
@@ -8,20 +9,21 @@ export async function GET(
   try {
     const { slug } = await params;
     const blog = await prisma.blogPost.findUnique({
-      where: { slug },
+      where: { slug }
     });
-
+    
     if (!blog) {
       return NextResponse.json(
-        { success: false, error: "Blog not found" },
+        { success: false, error: 'Blog not found' },
         { status: 404 }
       );
     }
-
+    
     return NextResponse.json({ success: true, blog });
   } catch (error) {
+    console.error('Blog fetch error:', error);
     return NextResponse.json(
-      { success: false, error: "Failed to fetch blog" },
+      { success: false, error: 'Failed to fetch blog' },
       { status: 500 }
     );
   }
@@ -35,7 +37,7 @@ export async function PUT(
   try {
     const { slug } = await params;
     const data = await request.json();
-
+    
     const blog = await prisma.blogPost.update({
       where: { slug },
       data: {
@@ -46,14 +48,15 @@ export async function PUT(
         tags: data.tags,
         imageUrl: data.imageUrl,
         published: data.published,
-        updatedAt: new Date(),
-      },
+        updatedAt: new Date()
+      }
     });
-
+    
     return NextResponse.json({ success: true, blog });
   } catch (error) {
+    console.error('Blog update error:', error);
     return NextResponse.json(
-      { success: false, error: "Failed to update blog" },
+      { success: false, error: 'Failed to update blog' },
       { status: 500 }
     );
   }
@@ -67,16 +70,17 @@ export async function DELETE(
   try {
     const { slug } = await params;
     await prisma.blogPost.delete({
-      where: { slug },
+      where: { slug }
     });
-
+    
     return NextResponse.json({
       success: true,
-      message: "Blog deleted successfully",
+      message: 'Blog deleted successfully'
     });
   } catch (error) {
+    console.error('Blog delete error:', error);
     return NextResponse.json(
-      { success: false, error: "Failed to delete blog" },
+      { success: false, error: 'Failed to delete blog' },
       { status: 500 }
     );
   }

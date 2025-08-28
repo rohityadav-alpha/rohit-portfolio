@@ -1,7 +1,5 @@
 "use client";
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Header from '@/components/Header';
 
 interface Blog {
   id: number;
@@ -19,7 +17,7 @@ interface Blog {
 export default function BlogsPage() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
-  const [isAdmin, setIsAdmin] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     fetchBlogs();
@@ -41,21 +39,6 @@ export default function BlogsPage() {
     }
   };
 
-  const handleDelete = async (slug: string, title: string) => {
-    if (confirm(`Are you sure you want to delete "${title}"?`)) {
-      try {
-        const res = await fetch(`/api/blogs/${slug}`, {
-          method: 'DELETE',
-        });
-        const data = await res.json();
-        if (data.success) {
-          fetchBlogs();
-        }
-      } catch (error) {
-        console.error('Error deleting blog:', error);
-      }
-    }
-  };
 
   if (loading) {
     return (
@@ -70,8 +53,6 @@ export default function BlogsPage() {
 
   return (
     <main>
-      <Header />
-    
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -80,30 +61,6 @@ export default function BlogsPage() {
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Thoughts, insights, and tutorials about web development and technology
           </p>
-          
-          {/* Admin Panel */}
-          {isAdmin && (
-            <div className="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-200 max-w-md mx-auto">
-              <p className="text-blue-800 font-medium mb-3">🔐 Admin Panel</p>
-              <div className="flex gap-3 items-center justify-center">
-                <Link
-                  href="/blogs/add"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors"
-                >
-                  ➕ Add New Blog
-                </Link>
-                <button
-                  onClick={() => {
-                    localStorage.removeItem("isAdmin");
-                    setIsAdmin(false);
-                  }}
-                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors"
-                >
-                  🚪 Logout
-                </button>
-              </div>
-            </div>
-          )}
         </div>
 
         {/* Blog Grid */}
@@ -131,26 +88,7 @@ export default function BlogsPage() {
                     </div>
                   )}
                   
-                  {/* Admin Controls */}
-                  {isAdmin && (
-                    <div className="absolute top-2 right-2 bg-white rounded-lg shadow-md p-1 flex gap-1">
-                      <Link
-                        href={`/blogs/${blog.slug}/edit`}
-                        className="bg-yellow-500 hover:bg-yellow-600 text-white p-1.5 rounded text-xs"
-                        title="Edit Blog"
-                      >
-                        ✏️
-                      </Link>
-                      <button
-                        onClick={() => handleDelete(blog.slug, blog.title)}
-                        className="bg-red-500 hover:bg-red-600 text-white p-1.5 rounded text-xs"
-                        title="Delete Blog"
-                      >
-                        🗑️
-                      </button>
-                    </div>
-                  )}
-
+                  
                   {/* Status Badge */}
                   {!blog.published && (
                     <div className="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full">
@@ -183,15 +121,6 @@ export default function BlogsPage() {
                     <span className="font-medium">{blog.author}</span>
                     <time>{new Date(blog.createdAt).toLocaleDateString()}</time>
                   </div>
-
-                  {/* Read More */}
-                  <Link
-                    href={`/blogs/${blog.slug}`}
-                    className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium text-sm group-hover:gap-2 transition-all"
-                  >
-                    Read Article
-                    <span className="ml-1 group-hover:ml-0 transition-all">→</span>
-                  </Link>
                 </div>
               </article>
             ))}

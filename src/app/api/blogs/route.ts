@@ -1,3 +1,4 @@
+// D:\rohit-portfolio\src\app\api\blogs\route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 
@@ -9,6 +10,7 @@ export async function GET() {
     });
     return NextResponse.json({ success: true, blogs });
   } catch (error) {
+    console.error('Blog fetch error:', error);
     return NextResponse.json({ success: false, error: 'Failed to fetch blogs' }, { status: 500 });
   }
 }
@@ -40,6 +42,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true, blog });
   } catch (error) {
+    console.error('Blog creation error:', error);
     return NextResponse.json({ success: false, error: 'Failed to create blog' }, { status: 500 });
   }
 }

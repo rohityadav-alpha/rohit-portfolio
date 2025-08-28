@@ -1,6 +1,8 @@
+// D:\rohit-portfolio\src\app\blogs\add\page.tsx
 "use client";
 import { useState, useEffect } from 'react';
 import BlogUpload from '../../../components/sections/BlogUpload';
+import Header from '@/components/Header';
 
 export default function AddBlogPage() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -64,11 +66,13 @@ export default function AddBlogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 sm:py-12 lg:py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-4">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center sm:text-left">
-            Admin Panel - Add Blog
+    <main>
+      <Header />
+      <div className="min-h-screen bg-gray-50 py-8 sm:py-12 lg:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 sm:mb-8 gap-4">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center sm:text-left">
+              Admin Panel - Add Blog
           </h1>
           <button
             onClick={() => {
@@ -85,5 +89,6 @@ export default function AddBlogPage() {
         <BlogUpload />
       </div>
     </div>
+    </main>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
@@ -62,45 +62,63 @@ export default function Projects() {
             Showcasing my recent development work and technical achievements
           </p>
         </div>
-
-        {/* Projects Grid */}
+        {/* Projects Grid - Mobile Responsive */}
         {projects.length === 0 ? (
           <div className="text-center py-12 sm:py-16">
             <div className="text-4xl sm:text-6xl mb-4">📁</div>
             <p className="text-gray-600 text-base sm:text-lg">No projects available yet.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {projects.map((project: any) => (
-              <div key={project.id} className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                {/* Project Header */}
-                <div className="relative p-4 sm:p-6">
-                  <div className="flex items-start justify-between mb-3 sm:mb-4">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300 flex-1 pr-2">
-                      {project.title}
-                    </h3>
-                    {/* Mark first project as featured */}
-                    {project === projects[0] && (
-                      <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap">
-                        Featured
-                      </span>
+              <div key={project.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
+
+                {/* Project Image - Responsive */}
+                {project.imageUrls && project.imageUrls.length > 0 && (
+                  <div className="relative">
+                    <img
+                      src={project.imageUrls[0]}
+                      alt={project.title}
+                      className="w-full h-36 sm:h-44 lg:h-48 object-cover"
+                    />
+                    {project.imageUrls.length > 1 && (
+                      <div className="absolute top-2 left-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded-full">
+                        +{project.imageUrls.length - 1} more
+                      </div>
                     )}
                   </div>
-
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 sm:mb-6">
+                )}
+                
+                {(!project.imageUrls || project.imageUrls.length === 0) && (
+                  <div className="w-full h-36 sm:h-44 lg:h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
+                    <span className="text-2xl sm:text-3xl lg:text-4xl">💻</span>
+                  </div>
+                )}
+                
+                {/* Project Content - Mobile Responsive */}
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 line-clamp-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 text-sm sm:text-base line-clamp-3">
                     {project.description}
                   </p>
-
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
-                    {project.techStack?.map((tech: string, index: number) => (
+                  
+                  {/* Tech Stack - Responsive */}
+                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-4">
+                    {project.techStack?.slice(0, 4).map((tech: string, index: number) => (
                       <span
                         key={index}
-                        className="px-2 sm:px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs sm:text-sm font-medium"
+                        className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full"
                       >
                         {tech}
                       </span>
                     ))}
+                    {project.techStack?.length > 4 && (
+                      <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+                        +{project.techStack.length - 4} more
+                      </span>
+                    )}
                   </div>
 
                   {/* Action Buttons */}
@@ -126,34 +144,10 @@ export default function Projects() {
                       </a>
                     )}
                   </div>
-                </div>
-
-                {/* Project Icon/Visual */}
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-100 p-6 sm:p-8 text-center">
-                  <div className="text-3xl sm:text-4xl mb-2 sm:mb-3">
-                    {project === projects[0] ? "🎤" : "💻"}
-                  </div>
-                  <p className="text-xs sm:text-sm text-gray-600 font-medium">
-                    {project === projects[0] ? "Featured Project" : "Development Project"}
-                  </p>
+                  
                 </div>
               </div>
             ))}
-          </div>
-        )}
-
-        {/* View All Projects Link */}
-        {projects.length > 0 && (
-          <div className="text-center mt-8 sm:mt-12">
-            <Link
-              href="/projects"
-              className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-colors duration-300"
-            >
-              View All Projects
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
           </div>
         )}
       </div>

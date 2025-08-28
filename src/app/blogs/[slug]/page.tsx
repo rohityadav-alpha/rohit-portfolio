@@ -1,7 +1,9 @@
+// D:\rohit-portfolio\src\app\blogs\[slug]\page.tsx
 "use client";
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import Header from "@/components/Header";
 
 export default function BlogDetailPage() {
   const params = useParams();
@@ -75,9 +77,41 @@ export default function BlogDetailPage() {
   }
 
   return (
+    <main>
+      <Header />
+   
     <div className="min-h-screen bg-gray-50 py-8 sm:py-12 lg:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         <article className="bg-white rounded-xl shadow-lg overflow-hidden">
+          {/* Admin Controls */}
+            {isAdmin && (
+              <div className="mb-6 sm:mb-8 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <h4 className="text-lg font-semibold text-red-900 mb-3">🔐 Admin Panel</h4>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href={`/blogs/${blog.slug}/edit`}
+                    className="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-lg font-medium text-center transition-colors"
+                  >
+                    ✏️ Edit Blog
+                  </Link>
+                  <button
+                    onClick={handleDelete}
+                    className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                  >
+                    🗑️ Delete Blog
+                  </button>
+                  <button
+                    onClick={() => {
+                      localStorage.removeItem("isAdmin");
+                      setIsAdmin(false);
+                    }}
+                    className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                  >
+                    🚪 Logout Admin
+                  </button>
+                </div>
+              </div>
+            )}
           {/* Featured Image */}
           {blog.imageUrl && (
             <div className="relative">
@@ -127,36 +161,6 @@ export default function BlogDetailPage() {
               </div>
             </header>
 
-            {/* Admin Controls */}
-            {isAdmin && (
-              <div className="mb-6 sm:mb-8 p-4 bg-red-50 border border-red-200 rounded-lg">
-                <h4 className="text-lg font-semibold text-red-900 mb-3">🔐 Admin Panel</h4>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link
-                    href={`/blogs/${blog.slug}/edit`}
-                    className="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-lg font-medium text-center transition-colors"
-                  >
-                    ✏️ Edit Blog
-                  </Link>
-                  <button
-                    onClick={handleDelete}
-                    className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
-                  >
-                    🗑️ Delete Blog
-                  </button>
-                  <button
-                    onClick={() => {
-                      localStorage.removeItem("isAdmin");
-                      setIsAdmin(false);
-                    }}
-                    className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
-                  >
-                    🚪 Logout Admin
-                  </button>
-                </div>
-              </div>
-            )}
-
             {/* Blog Content */}
             <div className="prose prose-lg max-w-none mb-8">
               <div className="text-gray-700 leading-relaxed whitespace-pre-line">
@@ -194,5 +198,6 @@ export default function BlogDetailPage() {
         </div>
       </div>
     </div>
+    </main>
   );
 }

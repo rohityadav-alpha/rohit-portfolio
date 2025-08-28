@@ -122,20 +122,6 @@ export default function ProjectDetailPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             <div className="p-4 sm:p-6 lg:p-8">
-              {/* Project Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 flex-1">
-                  {project.title}
-                </h1>
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium w-fit">
-                  {project.category}
-                </span>
-              </div>
-
-              <p className="text-gray-700 mb-6 sm:mb-8 leading-relaxed text-base sm:text-lg">
-                {project.description}
-              </p>
-
               {/* Admin Controls */}
               {isAdmin && (
                 <div className="mb-6 sm:mb-8 p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg">
@@ -165,6 +151,20 @@ export default function ProjectDetailPage() {
                   </div>
                 </div>
               )}
+
+              {/* Project Header */}
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 flex-1">
+                  {project.title}
+                </h1>
+                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium w-fit">
+                  {project.category}
+                </span>
+              </div>
+
+              <p className="text-gray-700 mb-6 sm:mb-8 leading-relaxed text-base sm:text-lg">
+                {project.description}
+              </p>
 
               {/* Image Gallery */}
               {project.imageUrls && project.imageUrls.length > 0 && (
