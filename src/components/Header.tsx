@@ -41,6 +41,9 @@ export default function Header() {
               >
                 Contact
               </Link>
+              <Link href="/blogs" className="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">
+                Blogs
+              </Link>
               
               {/* Dynamic Button */}
               {isProjectsPage ? (
@@ -109,6 +112,13 @@ export default function Header() {
               onClick={() => setIsOpen(false)}
             >
               Contact
+            </Link>
+            <Link
+              href="/blogs"
+              className="text-gray-600 hover:text-blue-600 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Blogs
             </Link>
             
             {/* Mobile Dynamic Button */}

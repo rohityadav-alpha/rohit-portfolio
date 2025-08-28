@@ -33,3 +33,21 @@ model PortfolioContact {
 
   @@map("portfolio_contacts")
 }
+
+model BlogPost {
+  id          Int      @id @default(autoincrement())
+  title       String
+  slug        String   @unique
+  content     String
+  excerpt     String?  // Brief summary for list view
+  author      String   @default("Rohit Yadav")
+  category    String   @default("Technology")
+  tags        String[] // Array of tags
+  imageUrl    String?  // Featured image
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("blog_posts")
+}
+
