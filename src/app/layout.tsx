@@ -9,13 +9,15 @@ export const metadata: Metadata = {
   description: 'Full-Stack Developer Portfolio',
 }
 
+interface RootLayoutProps {
+  children: React.ReactNode
+  modal?: React.ReactNode  // Add this line for intercepting routes
+}
+
 export default function RootLayout({
   children,
   modal
-}: {
-  children: React.ReactNode
-  modal: React.ReactNode
-}) {
+}: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={inter.className}>
