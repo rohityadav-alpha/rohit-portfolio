@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model PortfolioProject {
+  id          String      @id @default(cuid())
+  title       String
+  description String
+  slug        String      @unique
+  techStack   String[]    // Array of tech stack items
+  githubUrl   String?
+  liveUrl     String?
+  category    String
+  imageUrls   String[]    // Array of image URLs
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@map("portfolio_projects")
+}
+
+model PortfolioContact {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+  isRead    Boolean  @default(false)
+
+  @@map("portfolio_contacts")
+}
