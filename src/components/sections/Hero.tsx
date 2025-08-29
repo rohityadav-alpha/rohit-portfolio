@@ -5,8 +5,8 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center px-4 sm:px-6 lg:px-8">
-      
+    <section className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center px-6 sm:px-6 lg:px-8">
+
       <div className="container mx-auto text-center max-w-4xl">
         
         <motion.div

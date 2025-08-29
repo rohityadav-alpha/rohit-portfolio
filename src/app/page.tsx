@@ -14,8 +14,8 @@ export default function HomePage() {
       <Header />
       <Hero />
       <About />
-      <BlogSet />
       <Projects />
+      <BlogSet />
       <Skills />
       <Contact />
       <Footer />
