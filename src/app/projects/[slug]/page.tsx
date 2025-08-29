@@ -120,7 +120,7 @@ export default function ProjectDetailPage() {
       <Header />
       <div className="min-h-screen bg-gray-50 py-8 sm:py-12 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+          <div className="bg-white rounded-sm shadow-lg overflow-hidden">
             <div className="p-4 sm:p-6 lg:p-8">
               {/* Admin Controls */}
               {isAdmin && (
@@ -131,13 +131,13 @@ export default function ProjectDetailPage() {
                       href={`/projects/${project.slug}/edit`}
                       className="bg-yellow-600 hover:bg-yellow-700 text-white px-3 sm:px-4 py-2 rounded-lg font-medium flex items-center justify-center gap-2 text-sm transition-colors"
                     >
-                      ✏️ Edit Project
+                      Edit Project
                     </Link>
                     <button
                       onClick={handleDelete}
                       className="bg-red-600 hover:bg-red-700 text-white px-3 sm:px-4 py-2 rounded-lg font-medium flex items-center justify-center gap-2 text-sm transition-colors"
                     >
-                      🗑️ Delete Project
+                      Delete Project
                     </button>
                     <button
                       onClick={() => {
@@ -146,7 +146,7 @@ export default function ProjectDetailPage() {
                       }}
                       className="bg-gray-600 hover:bg-gray-700 text-white px-3 sm:px-4 py-2 rounded-lg font-medium text-sm transition-colors"
                     >
-                      🚪 Logout Admin
+                      Logout Admin
                     </button>
                   </div>
                 </div>
@@ -157,7 +157,7 @@ export default function ProjectDetailPage() {
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 flex-1">
                   {project.title}
                 </h1>
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium w-fit">
+                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-sm text-sm font-medium w-fit">
                   {project.category}
                 </span>
               </div>
@@ -178,7 +178,7 @@ export default function ProjectDetailPage() {
                         <img
                           src={imageUrl}
                           alt={`${project.title} screenshot ${index + 1}`}
-                          className="w-full h-40 sm:h-44 lg:h-48 object-cover rounded-lg hover:opacity-90 transition-opacity"
+                          className="w-full h-40 sm:h-44 lg:h-48 object-cover rounded-sm hover:opacity-90 transition-opacity"
                           onClick={(e) => openImageModal(imageUrl, e)}
                         />
                         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
@@ -201,7 +201,7 @@ export default function ProjectDetailPage() {
                   {project.techStack?.map((tech: string, index: number) => (
                     <span
                       key={index}
-                      className="px-3 py-1.5 bg-gray-100 text-gray-800 rounded-full text-sm font-medium"
+                      className="px-3 py-1.5 bg-gray-100 text-gray-800 rounded-sm text-sm font-medium"
                     >
                       {tech}
                     </span>
@@ -216,7 +216,7 @@ export default function ProjectDetailPage() {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gray-800 hover:bg-gray-900 text-white px-4 sm:px-6 py-3 rounded-lg font-medium text-center transition-colors"
+                    className="bg-gray-800 hover:bg-gray-900 text-white px-4 sm:px-6 py-3 rounded-sm font-medium text-center transition-colors"
                   >
                     View on GitHub
                   </a>
@@ -226,7 +226,7 @@ export default function ProjectDetailPage() {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-3 rounded-lg font-medium text-center transition-colors"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-3 rounded-sm font-medium text-center transition-colors"
                   >
                     Live Demo
                   </a>

@@ -105,9 +105,9 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-gray-50 p-4 sm:p-6 lg:p-8 rounded-xl">
+          <div className="bg-gray-50 p-4 sm:p-6 lg:p-8 rounded-sm shadow">
             {submitMessage && (
-              <div className={`p-3 sm:p-4 rounded-lg mb-4 sm:mb-6 text-sm sm:text-base ${
+              <div className={`p-3 sm:p-4 rounded-sm mb-4 sm:mb-6 text-sm sm:text-base ${
                 submitMessage.includes('Thank you') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
               }`}>
                 {submitMessage}
@@ -125,7 +125,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
                   placeholder="Enter your name"
                   suppressHydrationWarning={true}
                 />
@@ -141,7 +141,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
                   placeholder="Enter your email"
                   suppressHydrationWarning={true}
                 />
@@ -157,7 +157,7 @@ export default function Contact() {
                   onChange={handleInputChange}
                   required
                   rows={4}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-sm sm:text-base"
                   placeholder="Tell me about your project..."
                   suppressHydrationWarning={true}
                 ></textarea>
@@ -166,7 +166,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors text-sm sm:text-base"
+                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-2 sm:py-3 px-4 sm:px-6 rounded-sm transition-colors text-sm sm:text-base"
                 suppressHydrationWarning={true}
               >
                 {submitting ? 'Sending...' : 'Send Message'}

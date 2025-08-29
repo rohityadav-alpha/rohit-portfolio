@@ -71,7 +71,7 @@ export default function Projects() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {projects.map((project: any) => (
-              <div key={project.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
+              <div key={project.id} className="bg-white rounded-sm shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
 
                 {/* Project Image - Responsive */}
                 {project.imageUrls && project.imageUrls.length > 0 && (
@@ -79,7 +79,7 @@ export default function Projects() {
                     <img
                       src={project.imageUrls[0]}
                       alt={project.title}
-                      className="w-full h-36 sm:h-44 lg:h-48 object-cover"
+                      className="w-full h-48 sm:h-44 lg:h-48 object-cover"
                     />
                     {project.imageUrls.length > 1 && (
                       <div className="absolute top-2 left-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded-full">
@@ -109,7 +109,7 @@ export default function Projects() {
                     {project.techStack?.slice(0, 4).map((tech: string, index: number) => (
                       <span
                         key={index}
-                        className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full"
+                        className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-sm"
                       >
                         {tech}
                       </span>
@@ -128,7 +128,7 @@ export default function Projects() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 bg-gray-800 hover:bg-gray-900 text-white text-center py-2 px-3 rounded-lg font-medium transition-colors duration-300 text-sm"
+                        className="flex-1 bg-gray-800 hover:bg-gray-900 text-white text-center py-2 px-3 rounded-sm font-medium transition-colors duration-300 text-sm"
                       >
                         GitHub
                       </a>
@@ -138,7 +138,7 @@ export default function Projects() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-3 rounded-lg font-medium transition-colors duration-300 text-sm"
+                        className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-3 rounded-sm font-medium transition-colors duration-300 text-sm"
                       >
                         Live Demo
                       </a>

@@ -83,8 +83,8 @@ export default function BlogsPage() {
           
           {/* Admin Panel */}
           {isAdmin && (
-            <div className="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-200 max-w-md mx-auto">
-              <p className="text-blue-800 font-medium mb-3">🔐 Admin Panel</p>
+            <div className="mt-8 p-4 bg-yellow-100 rounded-lg border border-blue-200 max-w-md mx-auto">
+              <p className="text-blue-800 font-medium mb-3"> Admin Panel</p>
               <div className="flex gap-3 items-center justify-center">
                 <Link
                   href="/blogs/add"
@@ -99,7 +99,7 @@ export default function BlogsPage() {
                   }}
                   className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors"
                 >
-                  🚪 Logout
+                   Logout
                 </button>
               </div>
             </div>
@@ -116,7 +116,7 @@ export default function BlogsPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogs.map((blog) => (
-              <article key={blog.id} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
+              <article key={blog.id} className="bg-white rounded-sm shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
                 {/* Featured Image */}
                 <div className="relative overflow-hidden">
                   {blog.imageUrl ? (
@@ -127,7 +127,7 @@ export default function BlogsPage() {
                     />
                   ) : (
                     <div className="w-full h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                      <span className="text-4xl">📝</span>
+                      <span className="text-7xl text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">{blog.title.charAt(0)}</span>
                     </div>
                   )}
                   
@@ -139,31 +139,26 @@ export default function BlogsPage() {
                         className="bg-yellow-500 hover:bg-yellow-600 text-white p-1.5 rounded text-xs"
                         title="Edit Blog"
                       >
-                        ✏️
+                        Edit
                       </Link>
                       <button
                         onClick={() => handleDelete(blog.slug, blog.title)}
                         className="bg-red-500 hover:bg-red-600 text-white p-1.5 rounded text-xs"
                         title="Delete Blog"
                       >
-                        🗑️
+                        Delete
                       </button>
                     </div>
                   )}
 
-                  {/* Status Badge */}
-                  {!blog.published && (
-                    <div className="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full">
-                      Draft
-                    </div>
-                  )}
+                  
                 </div>
 
                 {/* Content */}
                 <div className="p-6">
                   {/* Category */}
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">
+                    <span className="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-lg">
                       {blog.category}
                     </span>
                   </div>

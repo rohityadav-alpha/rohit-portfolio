@@ -76,13 +76,13 @@ export default function ProjectsPage() {
           {/* Admin Panel - Mobile Responsive */}
           {isAdmin && (
             <div className="mt-6 p-3 sm:p-4 bg-yellow-100 rounded-lg border border-yellow-300 max-w-md mx-auto">
-              <p className="text-yellow-800 font-medium mb-2 text-sm sm:text-base">🔐 Admin Panel</p>
+              <p className="text-yellow-800 font-medium mb-2 text-sm sm:text-base">Admin Panel</p>
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 items-center justify-center">
                 <Link
                   href="/projects/add"
                   className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-4 py-2 rounded-lg font-medium text-sm transition-colors"
                 >
-                  ➕ Add New Project
+                   Add New Project
                 </Link>
                 <button
                   onClick={() => {
@@ -91,7 +91,7 @@ export default function ProjectsPage() {
                   }}
                   className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-3 sm:px-4 py-2 rounded-lg font-medium text-sm transition-colors"
                 >
-                  🚪 Admin Logout
+                   Admin Logout
                 </button>
               </div>
             </div>
@@ -107,7 +107,7 @@ export default function ProjectsPage() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {projects.map((project: any) => (
-              <div key={project.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
+              <div key={project.id} className="bg-white rounded-sm shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
                 {/* Admin Controls - Mobile Optimized */}
                 {isAdmin && (
                   <div className="absolute top-2 right-2 z-10 bg-white rounded-lg shadow-md p-1 flex gap-1">
@@ -116,14 +116,14 @@ export default function ProjectsPage() {
                       className="bg-yellow-500 hover:bg-yellow-600 text-white p-1.5 sm:p-2 rounded text-xs"
                       title="Edit Project"
                     >
-                      ✏️
+                      Edit
                     </Link>
                     <button
                       onClick={() => handleDelete(project.slug, project.title)}
                       className="bg-red-500 hover:bg-red-600 text-white p-1.5 sm:p-2 rounded text-xs"
                       title="Delete Project"
                     >
-                      🗑️
+                      Delete
                     </button>
                   </div>
                 )}
@@ -137,7 +137,7 @@ export default function ProjectsPage() {
                       className="w-full h-36 sm:h-44 lg:h-48 object-cover"
                     />
                     {project.imageUrls.length > 1 && (
-                      <div className="absolute top-2 left-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded-full">
+                      <div className="absolute top-2 left-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded-sm">
                         +{project.imageUrls.length - 1} more
                       </div>
                     )}
@@ -164,7 +164,7 @@ export default function ProjectsPage() {
                     {project.techStack?.slice(0, 4).map((tech: string, index: number) => (
                       <span
                         key={index}
-                        className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full"
+                        className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-sm"
                       >
                         {tech}
                       </span>
@@ -183,7 +183,7 @@ export default function ProjectsPage() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 bg-gray-800 hover:bg-gray-900 text-white text-center py-2 px-3 rounded-lg font-medium transition-colors duration-300 text-sm"
+                        className="flex-1 bg-gray-800 hover:bg-gray-900 text-white text-center py-2 px-3 rounded-sm font-medium transition-colors duration-300 text-sm"
                       >
                         GitHub
                       </a>
@@ -193,7 +193,7 @@ export default function ProjectsPage() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-3 rounded-lg font-medium transition-colors duration-300 text-sm"
+                        className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-3 rounded-sm font-medium transition-colors duration-300 text-sm"
                       >
                         Live Demo
                       </a>

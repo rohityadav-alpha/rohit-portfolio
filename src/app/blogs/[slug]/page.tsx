@@ -82,7 +82,7 @@ export default function BlogDetailPage() {
    
     <div className="min-h-screen bg-gray-50 py-8 sm:py-12 lg:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-        <article className="bg-white rounded-xl shadow-lg overflow-hidden">
+        <article className="bg-white rounded-sm shadow-lg overflow-hidden">
           {/* Admin Controls */}
             {isAdmin && (
               <div className="mb-6 sm:mb-8 p-4 bg-red-50 border border-red-200 rounded-lg">
@@ -92,13 +92,13 @@ export default function BlogDetailPage() {
                     href={`/blogs/${blog.slug}/edit`}
                     className="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-lg font-medium text-center transition-colors"
                   >
-                    ✏️ Edit Blog
+                    Edit Blog
                   </Link>
                   <button
                     onClick={handleDelete}
                     className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
                   >
-                    🗑️ Delete Blog
+                    Delete Blog
                   </button>
                   <button
                     onClick={() => {
@@ -107,7 +107,7 @@ export default function BlogDetailPage() {
                     }}
                     className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
                   >
-                    🚪 Logout Admin
+                    Logout Admin
                   </button>
                 </div>
               </div>
@@ -118,13 +118,11 @@ export default function BlogDetailPage() {
               <img
                 src={blog.imageUrl}
                 alt={blog.title}
-                className="w-full h-48 sm:h-64 lg:h-80 object-cover"
+                className="w-full h-48 sm:h-64 lg:h-80 object-cover rounded-sm"
               />
-              {!blog.published && (
-                <div className="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm">
-                  Draft
-                </div>
-              )}
+              <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <span className="text-white font-medium text-sm">Click to view full size</span>
+              </div>
             </div>
           )}
 
@@ -132,14 +130,10 @@ export default function BlogDetailPage() {
             {/* Blog Header */}
             <header className="mb-6 sm:mb-8">
               <div className="flex flex-wrap items-center gap-2 mb-4">
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-sm text-sm font-medium">
                   {blog.category}
                 </span>
-                {!blog.published && (
-                  <span className="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
-                    Draft
-                  </span>
-                )}
+            
               </div>
               
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
@@ -176,7 +170,7 @@ export default function BlogDetailPage() {
                   {blog.tags.map((tag: string, index: number) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-sm text-sm"
                     >
                       #{tag}
                     </span>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-700 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
@@ -15,7 +15,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a 
-                href="mailto:rohityadav@example.com" 
+                href="mailto:rohityadav474747@gmail.com" 
                 className="text-gray-400 hover:text-white transition-colors p-2"
                 aria-label="Email"
               >
@@ -25,7 +25,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a 
-                href="https://github.com/rohityadav" 
+                href="https://github.com/rohityadav-alpha" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors p-2"
@@ -36,7 +36,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a 
-                href="https://linkedin.com/in/rohityadav" 
+                href="https://www.linkedin.com/in/rohit-yadav-a7636b36a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=member_defaulthttps://www.linkedin.com/in/rohit-yadav-a7636b36a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=member_default" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors p-2"
@@ -76,7 +76,6 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-3 sm:mb-4">Get In Touch</h4>
             <div className="space-y-2 text-sm sm:text-base">
               <p className="text-gray-400">Mumbai, Maharashtra</p>
-              <p className="text-gray-400">BSc IT Student</p>
               <p className="text-gray-400">Mumbai University</p>
             </div>
           </div>

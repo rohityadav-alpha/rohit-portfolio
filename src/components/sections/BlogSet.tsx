@@ -71,9 +71,9 @@ export default function BlogsPage() {
             <p className="text-gray-600">Check back later for new content!</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {blogs.map((blog) => (
-              <article key={blog.id} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden group">
+              <article key={blog.id} className="bg-white rounded-sm shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
                 {/* Featured Image */}
                 <div className="relative overflow-hidden">
                   {blog.imageUrl ? (
@@ -84,17 +84,10 @@ export default function BlogsPage() {
                     />
                   ) : (
                     <div className="w-full h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                      <span className="text-4xl">📝</span>
+                      <span className="text-7xl text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">{blog.title.charAt(0)}</span>
                     </div>
                   )}
-                  
-                  
-                  {/* Status Badge */}
-                  {!blog.published && (
-                    <div className="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full">
-                      Draft
-                    </div>
-                  )}
+                
                 </div>
 
                 {/* Content */}

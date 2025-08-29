@@ -55,9 +55,9 @@ export default function Skills() {
                       </div>
                       
                       {/* Progress Bar */}
-                      <div className="w-full bg-gray-200 rounded-full h-2 sm:h-3">
+                      <div className="w-full bg-gray-200 rounded-sm h-2 sm:h-3">
                         <div
-                          className="bg-gradient-to-r from-blue-500 to-blue-600 h-2 sm:h-3 rounded-full transition-all duration-1000 ease-out"
+                          className="bg-gradient-to-r from-blue-400 to-blue-600 h-2 sm:h-3 rounded-sm transition-all duration-1000 ease-out"
                           style={{ width: `${skill.level}%` }}
                         ></div>
                       </div>
@@ -70,7 +70,7 @@ export default function Skills() {
 
         {/* Bottom Note */}
         <div className="text-center mt-8 sm:mt-12 max-w-3xl mx-auto">
-          <div className="bg-blue-50 border-l-4 border-blue-600 p-4 sm:p-6 rounded-lg">
+          <div className="bg-blue-100 border-l-4 border-blue-600 p-4 sm:p-6 rounded-sm">
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
               <span className="font-semibold text-blue-800">Continuously learning and adapting to new technologies.</span>
               <br className="hidden sm:block" />
