@@ -63,37 +63,6 @@ export default function About() {
                 </div>
               </div>
             </div>
-
-            {/* Profile Image/Stats */}
-            {/* <div className="lg:col-span-1 order-first lg:order-last">
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-100  p-6 sm:p-8 text-center">
-                Avatar Placeholder 
-                <div className="mx-auto flex items-center justify-center">
-                  <div className="h-36 w-36 rounded-full bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-500 p-1">
-                    <div className="flex h-full w-full rounded-full items-center justify-center bg-white back">
-                     <h1 className="text-6xl text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">R</h1>
-                    </div>
-                  </div>
-                </div>
-
-                Quick Stats 
-                <div className="space-y-3 sm:space-y-4">
-                  <div>
-                    <div className="text-xl sm:text-2xl font-bold text-blue-600">3rd Year</div>
-                    <div className="text-sm sm:text-base text-gray-600">BSc IT Student</div>
-                  </div>
-                  <div>
-                    <div className="text-xl sm:text-2xl font-bold text-blue-600">Mumbai</div>
-                    <div className="text-sm sm:text-base text-gray-600">University</div>
-                  </div>
-                  <div>
-                    <div className="text-xl sm:text-2xl font-bold text-blue-600">Full-Stack</div>
-                    <div className="text-sm sm:text-base text-gray-600">Developer</div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
-
           </div>
         </div>
       </div>
