@@ -24,11 +24,11 @@ export default function AdminLogin() {
     return (
       <button
         onClick={() => setShowLogin(true)}
-        className="fixed bottom-4 right-4 bg-gray-800 hover:bg-gray-900 text-white p-2 sm:p-3 rounded-full shadow-lg transition-colors z-50 text-sm sm:text-base"
+        className="fixed bottom-4 right-4 bg-gray-400 hover:bg-gray-600 text-white p-2 sm:p-3 rounded-full shadow-lg transition-colors z-50 text-sm sm:text-base"
         title="Admin Login"
         suppressHydrationWarning={true}
       >
-        🔐
+        Admin
       </button>
     );
   }

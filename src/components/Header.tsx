@@ -20,15 +20,15 @@ export default function Header() {
           <div className="flex-shrink-0">
             <Link href="/" className=" w-5 h-5 text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors rounded-full">
              <div className="mx-auto flex items-center justify-center">
-                  <div className="h-10 w-10 rounded-full bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-500 p-1">
-                    <div className="flex h-full w-full rounded-full items-center justify-center bg-white back">
-                     <h1 className="text-1xl text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">R</h1>
+                  <div className="h-10 w-10 rounded-full bg-gradient-to-tr from-blue-600 via-indigo-500 to-purple-500 p-1">
+                    <div className="flex h-full w-full rounded-full items-center justify-center bg-white back drop-shadow-2xl">
+                     <h1 className="text-1xl text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 to-purple-600 text-shadow-xl">R</h1>
                     </div>
                   </div>
                 </div>
             </Link>
           </div>
-
+ 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
@@ -63,6 +63,7 @@ export default function Header() {
                 >
                   🏠 Home
                 </Link>
+                
               ) : (
                 <Link
                   href="/blogs"
@@ -179,7 +180,7 @@ export default function Header() {
                   className="text-gray-600 hover:text-blue-600 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
-                  📁 Recent Projects
+                 Recent Projects
                 </Link>
               )}
             </div>

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Header from "@/components/Header";
+import AdminLogin from '@/components/AdminLogin';
 
 export default function ProjectDetailPage() {
   const params = useParams();
@@ -118,6 +119,7 @@ export default function ProjectDetailPage() {
   return (
     <>
       <Header />
+      <AdminLogin />
       <div className="min-h-screen bg-gray-50 py-8 sm:py-12 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
           <div className="bg-white rounded-sm shadow-lg overflow-hidden">

@@ -5,7 +5,6 @@ import Projects from '@/components/sections/Projects';
 import Skills from '@/components/sections/Skills'
 import Hero from '@/components/sections/Hero'
 import Contact from '@/components/sections/Contact'
-import AdminLogin from '@/components/AdminLogin';
 import BlogSet from '@/components/sections/BlogSet';
 
 export default function HomePage() {
@@ -19,7 +18,6 @@ export default function HomePage() {
       <Skills />
       <Contact />
       <Footer />
-       <AdminLogin />
     </main>
   );
 }

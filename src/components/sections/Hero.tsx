@@ -16,21 +16,21 @@ export default function Hero() {
           className="space-y-6 sm:space-y-8"
         >
           <motion.div
-        className="w-[160px] h-[160px] rounded-full overflow-hidden mx-auto mb-8 flex items-center justify-center bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-500 p-1"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1 }}
-        suppressHydrationWarning={true}
-      >
-        <Image
-          src="/images/profile.jpg"
-          alt="Rohit Yadav"
-          width={160}
-          height={160}
-          className="flex object-cover w-full h-full rounded-full justify-center items-center"
-          priority
-        />
-      </motion.div>
+            className="w-[160px] h-[160px] rounded-full overflow-hidden mx-auto mb-8 flex items-center justify-center bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 p-1"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1 }}
+            suppressHydrationWarning={true}
+           >
+             <Image
+              src="/images/profile.jpg"
+              alt="Rohit Yadav"
+              width={160}
+              height={160}
+              className="flex object-cover w-full h-full rounded-full justify-center items-center shadow-2xl bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"
+              priority
+          />
+         </motion.div>
           <motion.h1 
             className="text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold text-gray-900"
             initial={{ opacity: 0, y: 20 }}
