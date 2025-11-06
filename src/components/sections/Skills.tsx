@@ -54,7 +54,7 @@ export default function Skills() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Technical Skills
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-4"></div>
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-sm mb-4"></div>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Technologies and tools I work with to build modern web applications
           </p>
@@ -68,10 +68,10 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-100"
+              className="bg-white rounded-sm shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-100"
             >
               <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                <span className={`w-3 h-3 rounded-full ${getColorClasses(category.color)}`}></span>
+                <span className={`w-3 h-3 rounded-sm ${getColorClasses(category.color)}`}></span>
                 {category.name}
               </h3>
 
@@ -89,13 +89,13 @@ export default function Skills() {
                         </span>
                       </div>
 
-                      <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                      <div className="w-full h-2 bg-gray-200 rounded-sm overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
                           whileInView={{ width: `${skill.level}%` }}
                           viewport={{ once: true }}
                           transition={{ duration: 1, delay: index * 0.1 }}
-                          className={`h-full ${getColorClasses(category.color)} rounded-full`}
+                          className={`h-full ${getColorClasses(category.color)} rounded-sm`}
                         />
                       </div>
                     </div>
@@ -112,7 +112,7 @@ export default function Skills() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="max-w-3xl mx-auto text-center"
         >
-          <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-6 border border-gray-200">
+          <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-sm p-6 border border-gray-200">
             <p className="text-gray-700 text-base leading-relaxed mb-2">
               <span className="font-semibold text-gray-900">Continuously learning and adapting to new technologies.</span>
             </p>

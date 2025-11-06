@@ -155,11 +155,6 @@ export default function BlogsPage() {
                     </div>
                   )}
 
-                  {!blog.published && (
-                    <div className="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full">
-                      Draft
-                    </div>
-                  )}
                 </div>
 
                 <div className="p-6 flex-1 flex flex-col">
