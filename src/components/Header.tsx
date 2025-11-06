@@ -61,7 +61,7 @@ export default function Header() {
                   href="/"
                   className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                 >
-                  🏠 Home
+                  Home
                 </Link>
                 
               ) : (
@@ -79,7 +79,7 @@ export default function Header() {
                   href="/"
                   className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                 >
-                  🏠 Home
+                  Home
                 </Link>
               ) : (
                 <Link
@@ -153,7 +153,7 @@ export default function Header() {
                   href="/"
                    className="bg-blue-600 hover:bg-blue-700 text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
                 >
-                  🏠 Home
+                   Home
                 </Link>
               ) : (
                 <Link
@@ -172,7 +172,7 @@ export default function Header() {
                   className="bg-blue-600 hover:bg-blue-700 text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
-                  🏠 Home
+                   Home
                 </Link>
               ) : (
                 <Link

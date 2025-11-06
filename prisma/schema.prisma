@@ -51,3 +51,36 @@ model BlogPost {
 
   @@map("blog_posts")
 }
+
+model PostLike {
+  id              String   @id @default(cuid())
+  postId          String   
+  postType        String   // "blog" or "project"
+  userId          String   
+  userFingerprint String?  
+  ipAddress       String?  
+  likedAt         DateTime @default(now())
+
+  @@unique([postId, userId, postType])
+  @@map("post_likes")
+}
+
+model PostComment {
+  id          String   @id @default(cuid())
+  postId      String
+  postType    String
+  userName    String
+  userEmail   String
+  comment     String
+  parentId    String?
+  approved    Boolean  @default(false)
+  ipAddress   String?
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  parent      PostComment?  @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies     PostComment[] @relation("CommentReplies")
+
+  @@map("post_comments")
+}

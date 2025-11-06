@@ -1,6 +1,9 @@
 "use client";
-import { useState, useEffect } from 'react';
 
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
@@ -15,7 +18,6 @@ export default function Projects() {
       const res = await fetch('/api/projects');
       const data = await res.json();
       if (data.success) {
-        // Show only first 6 projects for featured section
         setProjects(data.projects.slice(0, 6));
       }
     } catch (error) {
@@ -27,22 +29,20 @@ export default function Projects() {
 
   if (loading) {
     return (
-      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <section id="projects" className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               Featured Projects
             </h2>
-            <div className="w-16 sm:w-24 h-1 bg-blue-600 mx-auto mb-4 sm:mb-6"></div>
-            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-4"></div>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
               Showcasing my recent development work and technical achievements
             </p>
           </div>
-          
-          {/* Loading State */}
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading projects...</p>
+          <div className="text-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+            <p className="text-gray-600 mt-4">Loading projects...</p>
           </div>
         </div>
       </section>
@@ -50,105 +50,154 @@ export default function Projects() {
   }
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+    <section id="projects" className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Featured Projects
           </h2>
-          <div className="w-16 sm:w-24 h-1 bg-blue-600 mx-auto mb-4 sm:mb-6"></div>
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-4"></div>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Showcasing my recent development work and technical achievements
           </p>
-        </div>
-        {/* Projects Grid - Mobile Responsive */}
-        {projects.length === 0 ? (
-          <div className="text-center py-12 sm:py-16">
-            <div className="text-4xl sm:text-6xl mb-4">📁</div>
-            <p className="text-gray-600 text-base sm:text-lg">No projects available yet.</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {projects.map((project: any) => (
-              <div key={project.id} className="bg-white rounded-sm shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
+        </motion.div>
 
-                {/* Project Image - Responsive */}
-                {project.imageUrls && project.imageUrls.length > 0 && (
-                  <div className="relative">
-                    <img
-                      src={project.imageUrls[0]}
-                      alt={project.title}
-                      className="w-full h-48 sm:h-44 lg:h-48 object-cover"
-                    />
-                    {project.imageUrls.length > 1 && (
-                      <div className="absolute top-2 left-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded-full">
-                        +{project.imageUrls.length - 1} more
+        {projects.length === 0 ? (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center py-16 bg-gray-50 rounded-sm"
+          >
+            <div className="text-gray-400 text-6xl mb-4">
+              <svg className="w-24 h-24 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+              </svg>
+            </div>
+            <p className="text-gray-600 text-lg">No projects available yet.</p>
+          </motion.div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              {projects.map((project: any, index: number) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-white rounded-sm shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group"
+                >
+                  <div className="relative h-48 overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
+                    {project.imageUrls && project.imageUrls.length > 0 ? (
+                      <>
+                        <img
+                          src={project.imageUrls[0]}
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        {project.imageUrls.length > 1 && (
+                          <div className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded-sm">
+                            +{project.imageUrls.length - 1} more
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <svg className="w-16 h-16 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
                       </div>
                     )}
                   </div>
-                )}
-                
-                {(!project.imageUrls || project.imageUrls.length === 0) && (
-                  <div className="w-full h-36 sm:h-44 lg:h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
-                    <span className="text-2xl sm:text-3xl lg:text-4xl">💻</span>
-                  </div>
-                )}
-                
-                {/* Project Content - Mobile Responsive */}
-                <div className="p-4 sm:p-6">
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 line-clamp-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4 text-sm sm:text-base line-clamp-3">
-                    {project.description}
-                  </p>
-                  
-                  {/* Tech Stack - Responsive */}
-                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-4">
-                    {project.techStack?.slice(0, 4).map((tech: string, index: number) => (
-                      <span
-                        key={index}
-                        className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.techStack?.length > 4 && (
-                      <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
-                        +{project.techStack.length - 4} more
-                      </span>
-                    )}
-                  </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 bg-gray-800 hover:bg-gray-900 text-white text-center py-2 px-3 rounded-sm font-medium transition-colors duration-300 text-sm"
-                      >
-                        GitHub
-                      </a>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                      {project.title}
+                    </h3>
+
+                    <p className="text-gray-600 mb-4 line-clamp-3 text-sm leading-relaxed">
+                      {project.description}
+                    </p>
+
+                    {project.techStack && project.techStack.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.techStack.slice(0, 4).map((tech: string, idx: number) => (
+                          <span
+                            key={idx}
+                            className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-sm"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {project.techStack.length > 4 && (
+                          <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-sm">
+                            +{project.techStack.length - 4}
+                          </span>
+                        )}
+                      </div>
                     )}
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-3 rounded-sm font-medium transition-colors duration-300 text-sm"
+
+                    <div className="flex gap-3 pt-4 border-t">
+                      <Link
+                        href={`/projects/${project.slug}`}
+                        className="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-sm font-medium text-sm transition-colors inline-flex items-center justify-center gap-2"
                       >
-                        Live Demo
-                      </a>
-                    )}
+                        View Details
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 bg-gray-100 hover:bg-gray-900 text-gray-700 hover:text-white rounded-sm transition-colors"
+                          aria-label="GitHub Repository"
+                        >
+                          <Github className="w-5 h-5" />
+                        </a>
+                      )}
+
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 bg-gray-100 hover:bg-blue-600 text-gray-700 hover:text-white rounded-sm transition-colors"
+                          aria-label="Live Demo"
+                        >
+                          <ExternalLink className="w-5 h-5" />
+                        </a>
+                      )}
+                    </div>
                   </div>
-                  
-                </div>
-              </div>
-            ))}
-          </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-center mt-12"
+            >
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-sm transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              >
+                View All Projects
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </motion.div>
+          </>
         )}
       </div>
     </section>
