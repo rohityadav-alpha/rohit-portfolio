@@ -94,7 +94,7 @@ export default function Contact() {
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-sm mb-4"></div>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Have a project in mind? Let's discuss how we can work together
+            Have a project in mind? Let&apos;s discuss how we can work together
           </p>
         </motion.div>
 
@@ -108,10 +108,10 @@ export default function Contact() {
           >
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Let's Work Together
+                Let&apos;s Work Together
               </h3>
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                Ready to build something amazing? I'm always open to discussing new projects,
+                Ready to build something amazing? I&apos;m always open to discussing new projects,
                 collaborative opportunities, or just having a chat about technology and development.
               </p>
             </div>

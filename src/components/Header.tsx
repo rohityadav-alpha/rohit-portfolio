@@ -1,22 +1,29 @@
 "use client";
 
 import { useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { redirect, usePathname } from 'next/navigation';
 import Link from 'next/link';
-
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+
   const isBlogPage = pathname.startsWith('/blogs');
   const isProjectsPage = pathname.startsWith('/projects');
   const isHomePage = pathname === '/';
 
+  const scrollToSection = (sectionId: string) => {
+    setIsOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <header className=" w-30 h-16 shadow-lg sticky top-0 z-50 items-center justify-center bg-white ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md py-3 sm:py-4">
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
           <div className="flex-shrink-0">
             <Link href="/" className=" w-5 h-5 text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors rounded-full">
              <div className="mx-auto flex items-center justify-center">
@@ -28,164 +35,184 @@ export default function Header() {
                 </div>
             </Link>
           </div>
- 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+            {isHomePage ? (
+              <>
+                <button
+                  onClick={() => redirect('/blogs')}
+                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm lg:text-base"
+                >
+                  Blogs
+                </button>
+                <button
+                  onClick={() => scrollToSection('about')}
+                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm lg:text-base"
+                >
+                  About
+                </button>
+                <button
+                  onClick={() => redirect('/projects')}
+                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm lg:text-base"
+                >
+                  Projects
+                </button>
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors text-sm lg:text-base"
+                >
+                  Contact
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/"
+                  className={`font-medium transition-colors text-sm lg:text-base ${
+                    pathname === '/'
+                      ? 'text-blue-600'
+                      : 'text-gray-700 hover:text-blue-600'
+                  }`}
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/projects"
+                  className={`font-medium transition-colors text-sm lg:text-base ${
+                    isProjectsPage
+                      ? 'text-blue-600'
+                      : 'text-gray-700 hover:text-blue-600'
+                  }`}
+                >
+                  Projects
+                </Link>
+                <Link
+                  href="/blogs"
+                  className={`font-medium transition-colors text-sm lg:text-base ${
+                    isBlogPage
+                      ? 'text-blue-600'
+                      : 'text-gray-700 hover:text-blue-600'
+                  }`}
+                >
+                  Blog
+                </Link>
+                <Link
+                  href="/#contact"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 lg:px-6 py-2 rounded-lg font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-sm lg:text-base"
+                >
+                  Get In Touch
+                </Link>
+              </>
+            )}
+          </div>
+
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 text-gray-700 hover:text-blue-600 transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
+      </nav>
+
+      {isOpen && (
+        <>
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 md:hidden"
+            onClick={() => setIsOpen(false)}
+          />
+
+          <div className="fixed top-14 sm:top-16 right-0 bottom-0 w-64 sm:w-80 bg-white shadow-2xl z-50 md:hidden overflow-y-auto">
+            <div className="p-4 sm:p-6 space-y-2">
               {isHomePage ? (
                 <>
-                  <Link
-                    href="#about" 
-                    className="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+                  <button
+                    onClick={() => scrollToSection('hero')}
+                    className="w-full text-left px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium transition-all text-sm sm:text-base"
+                  >
+                    Home
+                  </button>
+                  <button
+                    onClick={() => scrollToSection('about')}
+                    className="w-full text-left px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium transition-all text-sm sm:text-base"
                   >
                     About
-                  </Link>
-                  <Link 
-                    href="#skills" 
-                    className="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+                  </button>
+                  <button
+                    onClick={() => scrollToSection('projects')}
+                    className="w-full text-left px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium transition-all text-sm sm:text-base"
                   >
-                    Skills
-                  </Link>
-                  <Link 
-                    href="#contact" 
-                    className="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
+                    Projects
+                  </button>
+                  <button
+                    onClick={() => scrollToSection('contact')}
+                    className="w-full text-left px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium transition-all text-sm sm:text-base"
                   >
                     Contact
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/"
+                    onClick={() => setIsOpen(false)}
+                    className={`w-full block px-4 py-3 rounded-lg font-medium transition-all text-sm sm:text-base ${
+                      pathname === '/'
+                        ? 'bg-blue-50 text-blue-600'
+                        : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'
+                    }`}
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    href="/projects"
+                    onClick={() => setIsOpen(false)}
+                    className={`w-full block px-4 py-3 rounded-lg font-medium transition-all text-sm sm:text-base ${
+                      isProjectsPage
+                        ? 'bg-blue-50 text-blue-600'
+                        : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'
+                    }`}
+                  >
+                    Projects
+                  </Link>
+                  <Link
+                    href="/blogs"
+                    onClick={() => setIsOpen(false)}
+                    className={`w-full block px-4 py-3 rounded-lg font-medium transition-all text-sm sm:text-base ${
+                      isBlogPage
+                        ? 'bg-blue-50 text-blue-600'
+                        : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'
+                    }`}
+                  >
+                    Blog
+                  </Link>
+                  <Link
+                    href="/#contact"
+                    onClick={() => setIsOpen(false)}
+                    className="w-full block text-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-3 rounded-lg font-medium transition-all shadow-md mt-4 text-sm sm:text-base"
+                  >
+                    Get In Touch
                   </Link>
                 </>
-              ) :(
-                null
-              )}
-              {isBlogPage ? (
-                <Link
-                  href="/"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-                >
-                  Home
-                </Link>
-                
-              ) : (
-                <Link
-                  href="/blogs"
-                  className="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
-                >
-                  Blogs
-                </Link>
-              )}
-              
-              {/* Dynamic Button */}
-              {isProjectsPage ? (
-                <Link
-                  href="/"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-                >
-                  Home
-                </Link>
-              ) : (
-                <Link
-                  href="/projects"
-                  className="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
-                >
-                  Recent Projects
-                </Link>
               )}
             </div>
-          </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-colors"
-              aria-expanded="false"
-            >
-              <span className="sr-only">Open main menu</span>
-              {!isOpen ? (
-                // Hamburger icon
-                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              ) : (
-                // Close icon
-                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Navigation Menu */}
-      {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg border-t">
-           {isHomePage ? (
-                <> 
-            <Link
-              href="#about"
-              className="text-gray-600 hover:text-blue-600 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              href="#skills"
-              className="text-gray-600 hover:text-blue-600 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Skills
-            </Link>
-            <Link
-              href="#contact"
-              className="text-gray-600 hover:text-blue-600 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Contact
-            </Link>
-            </>
-            ) : (
-              null
-            )}
-            
-            {isBlogPage ? (
-                <Link
-                  href="/"
-                   className="bg-blue-600 hover:bg-blue-700 text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
-                >
-                   Home
-                </Link>
-              ) : (
-                <Link
-                  href="/blogs"
-                   className="text-gray-600 hover:text-blue-600 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
-                >
-                  Blogs
-                </Link>
-              )}
-            
-            {/* Mobile Dynamic Button */}
-            <div className="pt-2">
-              {isProjectsPage ? (
-                <Link
-                  href="/"
-                  className="bg-blue-600 hover:bg-blue-700 text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                   Home
-                </Link>
-              ) : (
-                <Link
-                  href="/projects"
-                  className="text-gray-600 hover:text-blue-600 hover:bg-gray-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                 Recent Projects
-                </Link>
-              )}
+            <div className="border-t p-4 sm:p-6">
+              <p className="text-xs sm:text-sm text-gray-600 text-center">
+                © 2025 Rohit Yadav. All rights reserved.
+              </p>
             </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );
