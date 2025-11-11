@@ -98,7 +98,7 @@ export default function Header() {
                 </Link>
                 <Link
                   href="/#contact"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 lg:px-6 py-2 rounded-lg font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-sm lg:text-base"
+                  className="bg-gradient-to-r from-blue-200 to-purple-200 hover:from-blue-300 hover:to-purple-300 text-white px-4 lg:px-6 py-2 rounded-lg font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-sm lg:text-base"
                 >
                   Get In Touch
                 </Link>
@@ -136,10 +136,10 @@ export default function Header() {
               {isHomePage ? (
                 <>
                   <button
-                    onClick={() => scrollToSection('hero')}
+                    onClick={() => redirect('/blogs')}
                     className="w-full text-left px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium transition-all text-sm sm:text-base"
                   >
-                    Home
+                    Blogs
                   </button>
                   <button
                     onClick={() => scrollToSection('about')}
@@ -148,7 +148,7 @@ export default function Header() {
                     About
                   </button>
                   <button
-                    onClick={() => scrollToSection('projects')}
+                    onClick={() => redirect('/projects')}
                     className="w-full text-left px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg font-medium transition-all text-sm sm:text-base"
                   >
                     Projects
@@ -198,7 +198,7 @@ export default function Header() {
                   <Link
                     href="/#contact"
                     onClick={() => setIsOpen(false)}
-                    className="w-full block text-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-3 rounded-lg font-medium transition-all shadow-md mt-4 text-sm sm:text-base"
+                    className="w-full block text-center bg-gradient-to-r from-blue-200 to-purple-200 hover:from-blue-300 hover:to-purple-300 text-white px-4 py-3 rounded-lg font-medium transition-all shadow-md mt-4 text-sm sm:text-base"
                   >
                     Get In Touch
                   </Link>
