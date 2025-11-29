@@ -38,7 +38,7 @@ export default function Hero() {
             >
               Full-Stack Developer With AI &{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                Machine Learning
+                Vibe Coder
               </span>
             </motion.h1>
 
